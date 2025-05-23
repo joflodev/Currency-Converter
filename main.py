@@ -5,8 +5,8 @@ class Currency_lables:
     def __init__(self, root):
         self.root = root
         self.root.title("Converter")
-        self.wanted_currency =StringVar(value="Wanted currency?")
-        self.chosen_currency =StringVar(value="Choose currency!")
+        self.wanted_currency =StringVar(value="Choose currency?")
+        self.chosen_currency =StringVar(value="Choose currency?")
         self.currency =["USD", "S-Franken", "R-Rubel"]
         # Label
         self.label = tk.Label(root, text=self.chosen_currency)
@@ -23,11 +23,21 @@ class Currency_lables:
         self.wanted_dropdown = OptionMenu(root, self.wanted_currency, *self.currency)
         self.wanted_dropdown.grid(row=2, column=3,columnspan=2)
 
+        self.button = tk.Button(root, text="MLT",command=self.MLT)
+        self.button.grid(row=3,columnspan=3)
+        self.button.config(height=1, width=10)
         # Label für Ausgabe
         self.output_label = tk.Label(root, text="")
         self.output_label.grid(row=1, column=3, columnspan=2)
         self.anzeigen()
+    def MLT(self):
+        #print("lisa")
+        #print(self.wanted_currency.get())
+        if self.wanted_currency.get()== "Choose currency?":
+            self.wanted_currency.set("Währung auswähle")  # Changes selection to "USD"
 
+        else:      
+            self.wanted_currency.set("Choose currency?")
     def anzeigen(self):
         
         if self.entry.get():
