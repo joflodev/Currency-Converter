@@ -7,7 +7,7 @@ class Currency_lables:
         self.root.title("Converter")
         self.wanted_currency =StringVar(value="Choose currency?")
         self.chosen_currency =StringVar(value="Choose currency?")
-        self.currency =["USD", "S-Franken", "R-Rubel"]
+        self.currency =["USD", "S-Franken", "R-Rubel", "Pfund"]
         # Label
         self.label = tk.Label(root, text=self.chosen_currency)
         self.label.grid(row=1, column=0, columnspan=2)
@@ -48,15 +48,14 @@ class Currency_lables:
             if self.wanted_currency.get()=="S-Franken":   
                 self.output_label.config(text=f"{amount*0.94} {self.wanted_currency.get()}")
             if self.wanted_currency.get()=="R-Rubel":   
-                self.output_label.config(text=f"{amount*89.96} {self.wanted_currency.get()}")            
+                self.output_label.config(text=f"{amount*89.96} {self.wanted_currency.get()}")
+            if self.wanted_currency.get()=="Pfund":
+                self.output_label.config(text=f"{amount*0.84} {self.wanted_currency.get()}")            
         else:
             self.output_label.config(text="")
         self.root.after(1000,self.anzeigen)
         
         
-
-
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.geometry("400x200")
